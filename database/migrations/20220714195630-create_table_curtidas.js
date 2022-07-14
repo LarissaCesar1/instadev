@@ -11,11 +11,26 @@ module.exports = {
     usuarios_id:{
       type: Sequelize.DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model:{
+          tableName: "usuarios"
+        },
+        key:"id"
+      }
+
     },
     publicacoes_id:{
       type: Sequelize.DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model:{
+          tableName: "publicacoes"
+        },
+        key:"id"
+      }
+
     },
+    
     
   });
     

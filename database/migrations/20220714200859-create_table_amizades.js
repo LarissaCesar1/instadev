@@ -20,6 +20,17 @@ module.exports = {
           type: Sequelize.DataTypes.BOOLEAN,
           allowNull: false,
         },
+        usuarios_id: {
+          type: Sequelize.DataTypes.INTEGER,
+          allowNull: false,
+          references: {
+            model:{
+              tableName: "usuarios"
+            },
+            key:"id"
+          }
+        }
+
       }
     )
   },

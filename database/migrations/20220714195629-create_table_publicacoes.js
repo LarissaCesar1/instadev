@@ -11,12 +11,18 @@ module.exports = {
       primaryKey: true,
       },
       texto: {
-      type: Sequelize.DataTypes.STRING(120),
+      type: Sequelize.DataTypes.TEXT,
       allowNull: false,
       },
       usuarios_id:{
       type: Sequelize.DataTypes.INTEGER,
-      allowNull:false
+      allowNull:false,
+      references: {
+        model:{
+          tableName: "usuarios"
+        },
+        key:"id"
+      }
       },
       imagem:{
       type: Sequelize.DataTypes.STRING(45),
