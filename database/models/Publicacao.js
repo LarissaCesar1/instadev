@@ -1,29 +1,36 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define(
+    let p = sequelize.define(
         "Publicacao",
         {
-            id:{
-                type:DataTypes.INTEGER,
+            id: {
+                type: DataTypes.INTEGER,
                 autoIncrement: true,
                 allowNull: false,
                 primaryKey: true,
-                },
-                texto: {
-                type:DataTypes.TEXT,
+            },
+            texto: {
+                type: DataTypes.TEXT,
                 allowNull: false,
-                },
-                usuarios_id:{
+            },
+            usuarios_id: {
                 type: DataTypes.INTEGER,
-                allowNull:false,
-                },
-                imagem:{
+                allowNull: false,
+            },
+            imagem: {
                 type: DataTypes.STRING(45),
                 allowNull: true,
-                }
-          },
-                {
-                    tableName: "publicacoes",
-                    timestamps: false
-                }
-        )
-  }
+            }
+        },
+        {
+            tableName: "publicacoes",
+            timestamps: false
+        }
+    )
+
+    p.associate = (models) => {
+        p.belongsTo(models.Usuario, { as:"autor", foreignKey:"usuarios_id" });
+
+    }
+
+    return p;
+}
